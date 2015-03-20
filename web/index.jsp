@@ -12,12 +12,14 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
         <title>Cuadrado M&aacute;gico</title>
         <link rel="stylesheet" href="Estilos.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     </head>
     <body>
         <center>
         <br><br><br><br>
         <form method="get" action="VerificarCuadrado" target="frameVerificacion">           
-            <div style="border: 1px solid;width: 178px;border-color: #DCDCDC;">
+            <div style="border: 1px solid;width: 160px;border-color: #DCDCDC;">
                 <input class="cuadrado solo-numero" type="text" maxlength="1" name="0">
                 <input class="cuadrado solo-numero" type="text" maxlength="1" name="1">
                 <input class="cuadrado solo-numero" type="text" maxlength="1" name="2">
@@ -31,7 +33,9 @@
                 <input class="cuadrado solo-numero" type="text" maxlength="1" name="8">
                 <br>
                 </div>
+            <br>
                 <input type="submit" value="Verificar">
+                
         </form>
         <button onclick="borrar()">Borrar</button>
         <br>

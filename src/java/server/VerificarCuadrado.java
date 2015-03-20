@@ -1,3 +1,5 @@
+package server;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 /**
  *
@@ -42,12 +45,15 @@ public class VerificarCuadrado extends HttpServlet {
             //out.println("<h1>Servlet VerificarCuadrado at " + request.getContextPath() + "</h1>");
             String[][] nombres={{"0","1","2"},{"3","4","5"},{"6","7","8"}};
             int [][] parametros= new int [3][3];
+            boolean vacios=false;
+            
             principal:
             for (int i = 0; i < parametros.length; i++) {
                 for (int j = 0; j < parametros[0].length; j++) {
                     String parametro = request.getParameter(nombres[i][j]);
-                    if (parametro=="") {
+                    if (parametro.equals("")) {
                         out.print("<center>Hay elementos vac&iacute;os</center>");
+                        vacios=true;
                         break principal;
                     }
                     else{
@@ -55,6 +61,34 @@ public class VerificarCuadrado extends HttpServlet {
                     }
                 }
             }
+            
+            if (!vacios) {
+                int valorAVerificar = parametros[0][0]+parametros[0][1]+parametros[0][2];
+                boolean correcto = true;
+                for (int i = 0; i < 3 && correcto == true; i++) {
+                    if (parametros[i][0]+parametros[i][1]+parametros[i][2]!=valorAVerificar) {
+                        correcto = false;
+                    }
+                }
+                for (int j = 0; j < 3 && correcto == true; j++) {
+                    if (parametros[0][j]+parametros[1][j]+parametros[2][j]!=valorAVerificar) {
+                        correcto = false;
+                    }
+                }
+                if (parametros[0][0]+parametros[1][1]+parametros[2][2]!=valorAVerificar) {
+                    correcto = false;
+                }
+                if (parametros[2][0]+parametros[1][1]+parametros[0][2]!=valorAVerificar) {
+                    correcto = false;
+                }
+                if (correcto) {
+                    out.print("<center>El cuadrado m&aacute;gico esta correcto</center>");
+                }
+                else{
+                    out.print("<center>El cuadrado m&aacute;gico esta incorrecto</center>");
+                }
+            }
+                
             out.println("</body>");
             out.println("</html>");
         }
